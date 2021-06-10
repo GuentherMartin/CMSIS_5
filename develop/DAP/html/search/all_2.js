@@ -7,6 +7,7 @@ var searchData=
   ['dap_5fdelay',['DAP_Delay',['../group__DAP__Delay.html',1,'']]],
   ['dap_5fdisconnect',['DAP_Disconnect',['../group__DAP__Disconnect.html',1,'']]],
   ['dap_5fexecutecommands',['DAP_ExecuteCommands',['../group__DAP__ExecuteCommands__gr.html',1,'']]],
+  ['dap_5fgetproductfirmwareversionstring',['DAP_GetProductFirmwareVersionString',['../group__DAP__Config__Debug__gr.html#ga5ed0dc088966d90042eeafc0d38ea7f4',1,'DAP_config.h']]],
   ['dap_5fgetproductstring',['DAP_GetProductString',['../group__DAP__Config__Debug__gr.html#ga947f60d7e5382cefe3087ad1fb46b13b',1,'DAP_config.h']]],
   ['dap_5fgetsernumstring',['DAP_GetSerNumString',['../group__DAP__Config__Debug__gr.html#ga7b875652fd4e380af4d419bc2878ab33',1,'DAP_config.h']]],
   ['dap_5fgetvendorstring',['DAP_GetVendorString',['../group__DAP__Config__Debug__gr.html#gad52ec88278b7b3ccbdcc10359dd8d0a8',1,'DAP_config.h']]],
@@ -39,8 +40,13 @@ var searchData=
   ['dap_5ftransferabort',['DAP_TransferAbort',['../group__DAP__TransferAbort.html',1,'']]],
   ['dap_5ftransferblock',['DAP_TransferBlock',['../group__DAP__TransferBlock.html',1,'']]],
   ['dap_5ftransferconfigure',['DAP_TransferConfigure',['../group__DAP__TransferConfigure.html',1,'']]],
+  ['dap_5fuart',['DAP_UART',['../group__DAP__Config__Debug__gr.html#gaadf03219973619f13487c3fcc0237256',1,'DAP_config.h']]],
   ['dap_5fuart_5fconfigure',['DAP_UART_Configure',['../group__DAP__UART__Configure.html',1,'']]],
+  ['dap_5fuart_5fcontrol',['DAP_UART_Control',['../group__DAP__UART__Control.html',1,'']]],
+  ['dap_5fuart_5fdriver',['DAP_UART_DRIVER',['../group__DAP__Config__Debug__gr.html#ga7afeb2572e74f9d14a9183f23b9e2779',1,'DAP_config.h']]],
+  ['dap_5fuart_5fstatus',['DAP_UART_Status',['../group__DAP__UART__Status.html',1,'']]],
   ['dap_5fuart_5ftransfer',['DAP_UART_Transfer',['../group__DAP__UART__Transfer.html',1,'']]],
   ['dap_5fuart_5ftransport',['DAP_UART_Transport',['../group__DAP__UART__Transport.html',1,'']]],
+  ['dap_5fuart_5fusb_5fcom_5fport',['DAP_UART_USB_COM_PORT',['../group__DAP__Config__Debug__gr.html#gabbc743d3241401f16c1718e358d4a6f2',1,'DAP_config.h']]],
   ['dap_5fwriteabort',['DAP_WriteABORT',['../group__DAP__WriteABORT.html',1,'']]]
 ];

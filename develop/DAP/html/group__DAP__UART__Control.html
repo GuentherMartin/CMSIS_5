@@ -3,8 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>Connect SWO Trace</title>
-<title>CMSIS-DAP: Connect SWO Trace</title>
+<title>DAP_UART_Control</title>
+<title>CMSIS-DAP: DAP_UART_Control</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="cmsis.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="jquery.js"></script>
@@ -33,7 +33,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-DAP
-   &#160;<span id="projectnumber">Version 2.1.0-alpha-spec</span>
+   &#160;<span id="projectnumber">Version 2.1.0</span>
    </div>
    <div id="projectbrief">Interface Firmware for CoreSight Debug Access Port</div>
   </td>
@@ -90,7 +90,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
 </div>
 <script type="text/javascript">
-$(document).ready(function(){initNavTree('group__DAP__USART__gr.html','');});
+$(document).ready(function(){initNavTree('group__DAP__UART__Control.html','');});
 </script>
 <div id="doc-content">
 <!-- window showing the filter options -->
@@ -109,15 +109,45 @@ $(document).ready(function(){initNavTree('group__DAP__USART__gr.html','');});
 
 <div class="header">
   <div class="headertitle">
-<div class="title">Connect SWO Trace</div>  </div>
+<div class="title">DAP_UART_Control<div class="ingroups"><a class="el" href="group__DAP__uart__gr.html">UART COM Commands</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Optional you may add a CMSIS-Driver USART to interface to SWO.  
+<p>Control UART data receive and transmit.  
 <a href="#details">More...</a></p>
-<p>Optional you may add a CMSIS-Driver USART to interface to SWO. </p>
-<p>A CMSIS-Driver USART can be used to capture the trace output on the SWO pin using a UART RX input on the microcontroller. To use a UART for SWO capturing, it is required to set the #define SWO_UART to 1. Refer to <a class="el" href="group__DAP__Config__Debug__gr.html">CMSIS-DAP Debug Unit Information</a> for more information.</p>
-<p>The actual USART Driver instance is defined in the source file <b>SWO.c</b> using the #define USART_PORT. You may change this define with a compiler option. </p>
+<p>Control UART data receive and transmit. </p>
+<h2>DAP_UART_Control (0x22): </h2>
+<p>Enables and disables UART receive and transmit (only for transport via DAP).</p>
+<p><b>DAP_UART_Control Request:</b> </p>
+<div class="fragment"><div class="line">| BYTE | BYTE    |</div>
+<div class="line">&gt; 0x22 | Control |</div>
+<div class="line">|******|*********|</div>
+</div><!-- fragment --><ul>
+<li><b>Control</b>:<ul>
+<li>Bit 0: 1 = Receive Enable, 0 = no operation</li>
+<li>Bit 1: 1 = Receive Disable, 0 = no operation</li>
+<li>Bit 2: 1 = Receive Buffer Flush, 0 = no operation</li>
+<li>Bit 3: reserved (0)</li>
+<li>Bit 4: 1 = Transmit Enable, 0 = no operation</li>
+<li>Bit 5: 1 = Transmit Disable, 0 = no operation</li>
+<li>Bit 6: 1 = Transmit Buffer Flush, 0 = no operation</li>
+<li>Bit 7: reserved (0)</li>
+</ul>
+</li>
+</ul>
+<dl class="section note"><dt>Note</dt><dd><a class="el" href="group__DAP__UART__Control.html">DAP_UART_Control</a> command can be used only if transport via DAP is enabled.<br/>
+ Receive/Transmit enable bit can be set only if DAP UART is already configured (<a class="el" href="group__DAP__UART__Configure.html">DAP_UART_Configure</a>).<br/>
+ </dd>
+<dd>
+When enable and disable bits are set at the same time, only disable is executed.<br/>
+ Receive/Transmit enable also automatically flushes any existing data in Receive/Transmit buffer.</dd></dl>
+<p><b>DAP_UART_Control Response:</b> </p>
+<div class="fragment"><div class="line">| BYTE | BYTE   |</div>
+<div class="line">&gt; 0x22 | Status |</div>
+<div class="line">|******|********|</div>
+</div><!-- fragment --><ul>
+<li><b>Status</b>: <a class="el" href="group__DAP__Response__Status.html">Response Status</a> </li>
+</ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
