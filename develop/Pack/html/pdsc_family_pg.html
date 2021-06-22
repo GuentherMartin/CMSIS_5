@@ -543,7 +543,7 @@ $(document).ready(function(){initNavTree('pdsc_family_pg.html','');});
 <hr/>
 <h1><a class="anchor" id="element_compile"></a>
 /package/devices/family/.../compile</h1>
-<p>Specify header files and preprocessor defines for programming. This element can occur on various levels. Multiple elements are allowed. The last occurrence in the hierarchy determines the actual define.</p>
+<p>Specify the CMSIS-Core compliant device header file and a device specific preprocessor define automatically included and set by the build tools. In case of devices embedding multiple processor cores, an additional core specific define can be specified. In this case the Pname attribute becomes mandatory. This element can occur on various levels. Multiple elements are allowed. The last occurrence in the hierarchy determines the effective include path and define. It is required that each device has an effective header and define.</p>
 <dl class="section note"><dt>Note</dt><dd><ul>
 <li>In the example below, the device <b>STM32F407IG</b> will have a define <code>STM32F407IG</code>. Previous defines are overridden.</li>
 <li>It is good practice to add both attributes (<code>header</code> and <code>define</code>) in the attributes list of the <code>compile</code> element together. This clarifies the relationship between header file and define.</li>
@@ -578,9 +578,11 @@ $(document).ready(function(){initNavTree('pdsc_family_pg.html','');});
 <tr>
 <td>Pname </td><td>Processor identifier. This attribute <b>is mandatory for devices that embed multiple processors if the header and define is different for each processor</b>. Only alphabetical characters, decimal digits, '-' and '_' are allowed.  </td><td>RestrictedString </td><td>optional  </td></tr>
 <tr>
-<td>header </td><td>C-header file with path relative to the installation. </td><td>xs:string </td><td>optional  </td></tr>
+<td>header </td><td>CMSIS-Core compliant device header file with path relative to the pack's base folder. </td><td>xs:string </td><td>required  </td></tr>
 <tr>
-<td>define </td><td>C-file name with device specific preprocessor defines. The path is relative to the installation. </td><td>xs:string </td><td>optional  </td></tr>
+<td>define </td><td>Device specific preprocessor define (macro). This macro is set in the pre-processor command line (-D&lt;macro&gt;) and allows to select device specific code during preprocessing of the application code, e.g. enabling/disabling device specific definitions in the device header file. </td><td>xs:string </td><td>required  </td></tr>
+<tr>
+<td>Pdefine </td><td>This attribute can only be used for devices with multiple processor cores. It specifies a core specific preprocessor define (macro). This macro is set in the pre-processor command line (-D&lt;macro&gt;) and allows to select processor specific code during preprocessing of the application code, e.g. enabling/disabling core specific definitions in the device header file. </td><td>xs:string </td><td>optional  </td></tr>
 </table>
 <p>&#160;</p>
 <hr/>
@@ -1080,7 +1082,7 @@ $(document).ready(function(){initNavTree('pdsc_family_pg.html','');});
 <tr>
 <td>Dmve </td><td>Specifies whether a device supports the M-Profile Vector instruction set extension. Use predefined values as listed in the table <a class="el" href="pdsc_family_pg.html#DmveEnum">Device MVE</a>. </td><td><a class="el" href="pdsc_family_pg.html#DmveEnum">DmveEnum</a> DmveEnum </td><td>required for ARMv8.1-M based devices  </td></tr>
 <tr>
-<td>Dcdecp </td><td>Specifies whether a device supports Custom Datapath Extensions (<a href="https://developer.arm.com/documentation/ddi0607/ab/" target="_blank"><b>CDE</b></a>). Possible values are explained in <a class="el" href="pdsc_family_pg.html#DcdecpEnum">Custom Datapath Extensions</a>. </td><td>xs:Hex8BitType </td><td>required for ARMv8.1-M based devices with CDE support  </td></tr>
+<td>Dcdecp </td><td>Specifies whether a device implements Custom Datapath Extension Coprocessors and which coprocessor interfaces can be used. See (<a href="https://developer.arm.com/documentation/ddi0607/ab/" target="_blank"><b>CDE</b></a>). Possible values are explained in <a class="el" href="pdsc_family_pg.html#DcdecpEnum">Custom Datapath Extensions</a>. </td><td>Hex8BitType </td><td>required for ARMv8.1-M based devices with CDE support  </td></tr>
 <tr>
 <td>Dendian </td><td>Specifies the endianess of the processor. Use predefined values as listed in the table <a class="el" href="pdsc_family_pg.html#DendianEnum">Endinaness</a>. </td><td>DendianEnum </td><td>required  </td></tr>
 <tr>
@@ -1467,7 +1469,7 @@ $(document).ready(function(){initNavTree('pdsc_family_pg.html','');});
 <p><b>Examples:</b> </p>
 <ul>
 <li>Dcdecp=”0xff” enables CDE on all eight co-processor interfaces.</li>
-<li>Dcdecp="0x00010010" enables CDE only on co-processor interfaces 1 and 4.</li>
+<li>Dcdecp="0x12" enables CDE on co-processor interfaces 1 and 4.</li>
 </ul>
 <p>&#160;</p>
 <p><a class="anchor" id="DendianEnum"></a><b>Table: Endianness</b></p>
